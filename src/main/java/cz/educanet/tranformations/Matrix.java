@@ -27,40 +27,40 @@ public class Matrix implements IMatrix {
 
     @Override
     public IMatrix times(IMatrix matrix) {
-        IMatrix transposedMatrix = matrix.transpose();
-        double[][] temp = new double [getRows()][getColumns()];
+        IMatrix tM = matrix.transpose();
+        double[][] arr = new double [getRows()][getColumns()];
         for (int y = 0; y < getColumns(); y++) {
             for (int x = 0; x < getRows(); x++) {
-                int sum = 0;
+                int i = 0;
                 for (int z = 0; z < getRows(); z++) {
-                    sum += rawArray[x][z] * transposedMatrix.get(y, z);
+                    i += rawArray[x][z] * tM.get(y, z);
                 }
-                temp[x][y] = sum;
+                arr[x][y] = i;
             }
         }
-        return MatrixFactory.create(temp);
+        return MatrixFactory.create(arr);
     }
 
     @Override
     public IMatrix times(Number scalar) {
-        double[][] temp = new double [getRows()][getColumns()];
+        double[][] arr = new double [getRows()][getColumns()];
         for (int y = 0; y < getColumns(); y++) {
             for (int x = 0; x < getRows(); x++) {
-                temp[x][y] *= scalar.doubleValue();
+                arr[x][y] *= scalar.doubleValue();
             }
         }
-        return MatrixFactory.create(temp);
+        return MatrixFactory.create(arr);
     }
 
     @Override
     public IMatrix add(IMatrix matrix) {
-        double[][] temp = new double [getRows()][getColumns()];
-        for (int y = 0; y < this.getColumns(); y++) {
-            for (int x = 0; x < this.getRows(); x++) {
-                temp[x][y] +=  this.get(x, y);
+        double[][] arr = new double [getRows()][getColumns()];
+        for (int y = 0; y < getColumns(); y++) {
+            for (int x = 0; x < getRows(); x++) {
+                arr[x][y] += get(x, y);
             }
         }
-        return MatrixFactory.create(temp);
+        return MatrixFactory.create(arr);
     }
 
     @Override
