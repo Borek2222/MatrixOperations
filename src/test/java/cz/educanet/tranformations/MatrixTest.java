@@ -63,25 +63,45 @@ public class MatrixTest {
 
     @Test
     public void times() {
-        a.times(b);
+        double[][] timesCheck = {
+                {1, 1, 1},
+                {1, 1, 1},
+                {0, 0, 0}
+        };
+
+        assertEquals(MatrixFactory.create(timesCheck), b.times(c));
     }
 
-    // works
     @Test
     public void timesScalar() {
-        b.times(2);
+        double[][] timesCheck = {
+                {2, 2, 2},
+                {2, 2, 2},
+        };
+
+        assertEquals(MatrixFactory.create(timesCheck), a.times(2));
     }
 
-    // works
     @Test
     public void add() {
-        b.add(c);
+        double[][] addCheck = {
+                {2, 1, 1},
+                {1, 2, 1},
+                {0, 0, 1}
+        };
+
+        assertEquals(MatrixFactory.create(addCheck), b.add(c));
     }
 
-    // works
     @Test
     public void subtract() {
-        b.subtract(c);
+        double[][] subCheck = {
+                {0, 1, 1},
+                {1, 0, 1},
+                {0, 0, 1}
+        };
+
+        assertEquals(MatrixFactory.create(subCheck), b.subtract(c));
     }
 
     // works

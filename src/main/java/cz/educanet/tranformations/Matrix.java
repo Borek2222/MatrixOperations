@@ -27,17 +27,7 @@ public class Matrix implements IMatrix {
 
     @Override
     public IMatrix times(IMatrix matrix) {
-        double[][] arr = new double [getRows()][getColumns()];
-        for (int y = 0; y < getColumns(); y++) {
-            for (int x = 0; x < getRows(); x++) {
-                int i = 0;
-                for (int z = 0; z < getRows(); z++) {
-                    i += rawArray[x][z];
-                }
-                arr[x][y] = i;
-            }
-        }
-        return MatrixFactory.create(arr);
+        throw new NotImplementedError(); // TODO:
     }
 
     @Override
