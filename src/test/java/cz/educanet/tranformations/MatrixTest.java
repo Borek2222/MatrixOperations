@@ -63,14 +63,17 @@ public class MatrixTest {
 
     @Test
     public void times() {
+        a.times(b);
     }
 
     @Test
     public void timesScalar() {
+        b.times(2);
     }
 
     @Test
     public void add() {
+        b.add(c);
     }
 
     @Test

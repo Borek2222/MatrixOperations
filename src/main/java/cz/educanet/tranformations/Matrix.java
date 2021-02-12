@@ -27,22 +27,45 @@ public class Matrix implements IMatrix {
 
     @Override
     public IMatrix times(IMatrix matrix) {
-        throw new NotImplementedError(); // TODO:
+        IMatrix transposedMatrix = matrix.transpose();
+        double[][] temp = new double [getRows()][getColumns()];
+        for (int y = 0; y < getColumns(); y++) {
+            for (int x = 0; x < getRows(); x++) {
+                int sum = 0;
+                for (int z = 0; z < getRows(); z++) {
+                    sum += rawArray[x][z] * transposedMatrix.get(y, z);
+                }
+                temp[x][y] = sum;
+            }
+        }
+        return MatrixFactory.create(temp);
     }
 
     @Override
     public IMatrix times(Number scalar) {
-        throw new NotImplementedError(); // TODO:
+        double[][] temp = new double [getRows()][getColumns()];
+        for (int y = 0; y < getColumns(); y++) {
+            for (int x = 0; x < getRows(); x++) {
+                temp[x][y] *= scalar.doubleValue();
+            }
+        }
+        return MatrixFactory.create(temp);
     }
 
     @Override
     public IMatrix add(IMatrix matrix) {
-        throw new NotImplementedError(); // TODO:
+        double[][] temp = new double [getRows()][getColumns()];
+        for (int y = 0; y < this.getColumns(); y++) {
+            for (int x = 0; x < this.getRows(); x++) {
+                temp[x][y] +=  this.get(x, y);
+            }
+        }
+        return MatrixFactory.create(temp);
     }
 
     @Override
     public double get(int n, int m) {
-        throw new NotImplementedError(); // TODO:
+        return this.rawArray[n][m];
     }
 
     //region Optional
