@@ -24,6 +24,13 @@ public interface IMatrix {
     IMatrix add(IMatrix matrix);
 
     /**
+     * Subtracts two matrices
+     * @param matrix
+     * @return subtraction of the two matrices
+     */
+    IMatrix subtract(IMatrix matrix);
+
+    /**
      * Transposes the matrix (flips rows and columns)
      * @return flipped matrix
      */
@@ -52,5 +59,4 @@ public interface IMatrix {
      * @return the value of the "cell"
      */
     double get(int n, int m);
-
 }

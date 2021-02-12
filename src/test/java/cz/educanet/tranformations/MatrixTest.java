@@ -66,16 +66,25 @@ public class MatrixTest {
         a.times(b);
     }
 
+    // works
     @Test
     public void timesScalar() {
         b.times(2);
     }
 
+    // works
     @Test
     public void add() {
         b.add(c);
     }
 
+    // works
+    @Test
+    public void subtract() {
+        b.subtract(c);
+    }
+
+    // works
     @Test
     public void get() {
     }

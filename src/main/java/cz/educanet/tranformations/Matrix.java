@@ -27,13 +27,12 @@ public class Matrix implements IMatrix {
 
     @Override
     public IMatrix times(IMatrix matrix) {
-        IMatrix tM = matrix.transpose();
         double[][] arr = new double [getRows()][getColumns()];
         for (int y = 0; y < getColumns(); y++) {
             for (int x = 0; x < getRows(); x++) {
                 int i = 0;
                 for (int z = 0; z < getRows(); z++) {
-                    i += rawArray[x][z] * tM.get(y, z);
+                    i += rawArray[x][z];
                 }
                 arr[x][y] = i;
             }
@@ -58,6 +57,17 @@ public class Matrix implements IMatrix {
         for (int y = 0; y < getColumns(); y++) {
             for (int x = 0; x < getRows(); x++) {
                 arr[x][y] += get(x, y);
+            }
+        }
+        return MatrixFactory.create(arr);
+    }
+
+    @Override
+    public IMatrix subtract(IMatrix matrix) {
+        double[][] arr = new double [getRows()][getColumns()];
+        for (int y = 0; y < getColumns(); y++) {
+            for (int x = 0; x < getRows(); x++) {
+                arr[x][y] -= get(x, y);
             }
         }
         return MatrixFactory.create(arr);
